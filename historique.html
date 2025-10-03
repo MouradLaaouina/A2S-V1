@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <!-- Metadonnees et SEO -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chronologie d'Alliance Synergie Sant&eacute; - A2S</title>
+  <meta name="description" content="D&eacute;couvrez l'histoire d'Alliance Synergie Sant&eacute;, de sa cr&eacute;ation en 2009 &agrave; ses r&eacute;alisations majeures.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind=config={};
+    tailwind.config = {
+      prefix: 'tw-',
+      corePlugins: { preflight: false },
+      theme: { extend: { colors: { brand: { DEFAULT: '#2f6b2f', dark: '#255825', light: '#e8f5ee' } } } }
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation principale -->
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="brand" href="index.html"><img src="logoa2s.svg" alt="Logo Alliance Synergie Sant&eacute;" /><span class="brand-text">Alliance Synergie Sant&eacute;</span></a>
+    <button class="menu-button" aria-label="Ouvrir le menu" aria-controls="primary-nav" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <ul id="primary-nav">
+      <li class="has-submenu" data-new>
+        <button class="nav-link active" aria-haspopup="true" aria-expanded="true">ENTREPRISE</button>
+        <ul class="submenu" aria-label="Sous-menu Entreprise">
+          <li><a href="mot-president.html">Mot du pr&eacute;sident</a></li>
+          <li><a class="active" aria-current="page" href="historique.html">Historique</a></li>
+          <li><a href="organigramme.html">Organigramme</a></li>
+          <li><a href="softskills.html">Soft Skills</a></li>
+          <li><a href="chiffres-cles.html">Chiffres cl&eacute;s</a></li>
+          <li><a href="chaine-de-valeurs.html">Cha&icirc;ne de valeurs</a></li>
+        </ul>
+      </li>
+      <li data-new><a href="metiers.html" class="nav-link active" aria-current="page">M&Eacute;TIERS</a></li>
+      <li data-new><a href="partenaires.html" class="nav-link">PARTENAIRES</a></li>
+      <li data-new><a href="carrieres.html" class="nav-link">Carri&egrave;res</a></li>
+      <li data-new><a href="mediatheque.html" class="nav-link">M&eacute;diath&egrave;que</a></li>
+      <li class="has-submenu" data-new>
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false">Strat&eacute;gie</button>
+        <ul class="submenu" aria-label="Sous-menu Strat&eacute;gie">
+          <li><a href="#vision-afrique">Vision pour l'Afrique</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="spacer"></div>
+  </nav>
+
+  <section class="hero hist-hero">
+    <header class="hist-header reveal">
+      <h1 class="hist-title">
+        <img class="hist-logo" src="A2sc.png" alt="Alliance Synergie Sant&eacute; - A2S" />
+      </h1>
+    </header>
+
+    <div class="container">
+      <div class="expertises-grid">
+        <div class="expertise-card reveal" data-delay="0">
+          <h3>2009</h3>
+          <div class="card-media"><img src="creation.png" alt="Cr&eacute;ation (2009) - Alliance Synergie Sant&eacute;" /></div>
+          <p>Cr&eacute;ation de l'entreprise et structuration initiale des &eacute;quipes.</p>
+          <a href="#" class="btn">En savoir plus</a>
+        </div>
+
+        <div class="expertise-card reveal" data-delay="1">
+          <h3>2012</h3>
+          <div class="card-media"><img src="lancement.jpg" alt="Lancement (2012) - Alliance Synergie Sant&eacute;" /></div>
+          <p>Lancement de la premi&egrave;re gamme de produits dermo‑cosm&eacute;tiques au Maroc.</p>
+          <a href="#" class="btn">En savoir plus</a>
+        </div>
+
+        <div class="expertise-card reveal" data-delay="2">
+          <h3>2017</h3>
+          <div class="card-media"><img src="Expansion.jpg" alt="Expansion nationale (2017) - Alliance Synergie Sant&eacute;" /></div>
+          <p>Expansion de la distribution &agrave; l'&eacute;chelle nationale avec de nouveaux partenariats.</p>
+          <a href="#" class="btn">En savoir plus</a>
+        </div>
+
+        <div class="expertise-card reveal" data-delay="3">
+          <h3>2025</h3>
+          <div class="card-media"><img src="Innovation.jpg" alt="Innovation (2025) - Alliance Synergie Sant&eacute;" /></div>
+          <p>Introduction de nouvelles solutions dermo‑cosm&eacute;tiques certifi&eacute;es pour l'Afrique.</p>
+          <a href="#" class="btn">En savoir plus</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Modal for expertise details -->
+  <div id="expertise-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-content" role="document">
+      <button class="modal-close" aria-label="Fermer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <h3 class="modal-title">D&eacute;tails</h3>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const cards = document.querySelectorAll('.expertise-card');
+      cards.forEach((card, i) => {
+        card.style.setProperty('--i', String(i));
+        card.classList.add('reveal');
+      });
+
+      // Modal logic for "En savoir plus"
+      const overlay = document.getElementById('expertise-modal');
+      const modalTitle = overlay.querySelector('.modal-title');
+      const modalBody = overlay.querySelector('.modal-body');
+      const btnClose = overlay.querySelector('.modal-close');
+
+      function openFromCard(card){
+        if (!overlay) return;
+        const title = (card.querySelector('h3')?.textContent || 'D&eacute;tails').trim();
+        const descEl = card.querySelector('p');
+        const mediaImg = card.querySelector('.card-media img');
+
+        modalTitle.textContent = title;
+        modalBody.innerHTML = '';
+
+        if (mediaImg) {
+          const img = document.createElement('img');
+          img.src = mediaImg.getAttribute('src');
+          img.alt = mediaImg.getAttribute('alt') || '';
+          modalBody.prepend(img);
+        }
+
+        if (descEl) {
+          const p = document.createElement('p');
+          p.innerHTML = descEl.innerHTML;
+          modalBody.appendChild(p);
+        }
+
+        overlay.classList.add('open');
+        overlay.setAttribute('aria-hidden','false');
+      }
+
+      function closeModal(){
+        overlay.classList.remove('open');
+        overlay.setAttribute('aria-hidden','true');
+      }
+
+      document.querySelectorAll('.expertise-card .btn').forEach(btn => {
+        btn.addEventListener('click', function(e){
+          e.preventDefault();
+          const card = btn.closest('.expertise-card');
+          if (card) openFromCard(card);
+        });
+      });
+
+      btnClose.addEventListener('click', closeModal);
+      overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+      document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal(); });
+    });
+  </script>
+</body>
+</html>

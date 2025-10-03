@@ -1,0 +1,395 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>M&eacute;diath&egrave;que &ndash; Alliance Synergie Sant&eacute;</title>
+  <meta name="description" content="Photos et vid&eacute;os de la m&eacute;diath&egrave;que: &eacute;v&eacute;nements, &eacute;quipe, produits et pr&eacute;sentations." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind=config={};
+    tailwind.config = { prefix: 'tw-', corePlugins: { preflight: false }, theme: { extend: { colors: { brand: { DEFAULT: '#2f6b2f', dark: '#255825', light: '#e8f5ee' } } } } };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    .media-wrap{max-width:1100px;margin:0 auto;padding:28px 16px}
+    .media-hero{margin:14px auto 0; background-image: linear-gradient(135deg, rgba(232,245,238,.88), rgba(255,255,255,.88)), url('Media.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; border:1px solid #ecf0ed; border-radius:16px; box-shadow: var(--shadow);}
+    .media-hero .inner{padding:clamp(18px,4vw,32px); text-align:center}
+    .media-hero h1{margin:0 0 6px; font-weight:900; font-size:clamp(22px,4vw,32px); color:var(--text)}
+    .media-hero p{margin:0; color:var(--muted)}
+    /* RÃƒÆ’Ã‚Â©duire uniquement la largeur du bloc hero */
+    .media-hero.media-wrap{max-width:760px}
+    /* Largeur responsive tablette/mobile */
+    @media (max-width: 1024px){ .media-hero.media-wrap{ max-width: 640px } }
+    @media (max-width: 768px){ .media-hero.media-wrap{ max-width: 100% } }
+
+    /* Filtres et recherche */
+    .media-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-top:14px}
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{padding:6px 10px;border-radius:999px;background:#f5faf6;border:1px solid #d9ecdf;color:#2f6b2f;font-weight:700;font-size:12px;cursor:pointer}
+    .chip.active{background:#e8f5ee}
+
+
+    /* Overlay photo (visionnage) */
+    .po-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;z-index:1300;padding:16px}
+    .po-overlay.open{display:flex}
+    .po-content{position:relative;max-width:min(92vw,1100px);max-height:86vh;display:flex;align-items:center;justify-content:center}
+    .po-img{max-width:100%;max-height:86vh;border-radius:10px;box-shadow:0 18px 36px rgba(0,0,0,.3);display:block;margin:0 auto}
+    .po-close{position:absolute;top:8px;right:8px;width:36px;height:36px;border-radius:999px;border:0;background:#fff;color:#2f6b2f;display:grid;place-items:center;box-shadow:0 10px 22px rgba(0,0,0,.22);cursor:pointer}
+
+    /* Galeries */
+    .media-section{margin-top:24px}
+    .media-section h2{margin:0 0 10px; font-weight:900; color:var(--text)}
+    .media-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;align-items:stretch}
+    .media-card{position:relative;background:#fff;border:1px solid #ecf0ed;border-radius:14px;box-shadow:var(--shadow);overflow:hidden;transition:transform .18s ease, box-shadow .18s ease}
+    .media-card:hover{transform:translateY(-4px); box-shadow:0 18px 36px rgba(0,0,0,.12)}
+    .media-card img,\n    .media-card video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:#000}
+    .media-caption{padding:10px 12px;color:var(--muted);font-size:14px}
+    /* Masquer les lÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©gendes de la lightbox sur cette page */
+    .lb-caption{display:none !important}
+
+    /* Liens de scroll entre sections */
+    
+
+    /* Reveal */
+    .reveal{opacity:0; transform: translateY(16px) scale(.98); transition: opacity .6s ease, transform .6s ease}
+    .reveal.is-visible{opacity:1; transform: none}
+
+    
+
+    /* Fallback anciens navigateurs sans aspect-ratio */
+    @supports not (aspect-ratio: 1 / 1){
+      .media-card img,.media-card video{height:180px}
+      @media (max-width:680px){ .media-card img,.media-card video{height:140px} }
+    }
+      /* Centrage des médias en affichage (mobile) */
+    @media (max-width: 768px){
+      /* Vidéo modale */
+      #video-modal .modal-content{display:flex;align-items:center;justify-content:center;padding:10px}
+      #video-modal .modal-body{width:100%;display:flex;align-items:center;justify-content:center}
+      #modal-video{width:100%;height:auto;max-height:80vh;object-fit:contain;margin:0 auto;display:block}
+      /* Photo overlay */
+      #photo-overlay .po-content{width:100%;display:flex;align-items:center;justify-content:center}
+      #photo-overlay .po-img{max-width:100%;max-height:80vh;object-fit:contain;margin:0 auto}
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation principale -->
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="brand" href="index.html"><img src="logoa2s.svg" alt="Logo" /><span class="brand-text">Alliance Synergie Sant&eacute;</span></a>
+    <button class="menu-button" aria-label="Ouvrir le menu" aria-controls="primary-nav" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <ul id="primary-nav">
+      <li class="has-submenu" data-new>
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false">ENTREPRISE</button>
+        <ul class="submenu" aria-label="Sous-menu Entreprise">
+          <li><a href="mot-president.html">Mot du pr&eacute;sident</a></li>
+          <li><a href="historique.html">Historique</a></li>
+          <li><a href="organigramme.html">Organigramme</a></li>
+          <li><a href="chiffres-cles.html">Chiffres cl&eacute;s</a></li>
+          <li><a href="chaine-de-valeurs.html">Cha&icirc;ne de valeurs</a></li>
+        </ul>
+      </li>
+      <li data-new><a href="metiers.html" class="nav-link">M&Eacute;TIERS</a></li>
+      <li data-new><a href="partenaires.html" class="nav-link">PARTENAIRES</a></li>
+      <li data-new><a href="carrieres.html" class="nav-link">Carri&egrave;res</a></li>
+      <li data-new><a href="mediatheque.html" class="nav-link active" aria-current="page">M&eacute;diath&egrave;que</a></li>
+      <li class="has-submenu" data-new>
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false">Strat&eacute;gie</button>
+        <ul class="submenu" aria-label="Sous-menu Strat&eacute;gie">
+          <li><a href="#vision-afrique">Vision pour l'Afrique</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="spacer"></div>
+  </nav>
+
+  <header class="media-hero media-wrap">
+    <div class="inner">
+      <h1>M&eacute;diath&egrave;que</h1>
+      <p>Parcourez nos photos et vid&eacute;os: &eacute;v&eacute;nements, &eacute;quipe et projets.</p>
+      <div class="media-tools">
+        
+        <div class="filters" role="tablist" aria-label="Filtrer le contenu">
+          <button class="chip active" data-filter="all" role="tab" aria-selected="true">Tous</button>
+          <button class="chip" data-filter="photos" role="tab" aria-selected="false">Photos</button>
+          <button class="chip" data-filter="videos" role="tab" aria-selected="false">Videos</button>
+        </div>
+        
+      </div>
+    </div>
+        </header>
+
+  <main class="media-wrap">
+    <section id="photos" class="media-section" aria-labelledby="photos-title">
+      <h2 id="photos-title">Photos</h2>
+      <div class="media-grid">
+        <figure class="media-card" data-kind="photos" data-tags="evenement equipe produit entreprise">
+          <a href="a2spic1.jpg">
+            <img src="a2spic1.jpg" alt="&Eacute;v&eacute;nement d'entreprise" loading="lazy" decoding="async" />
+          </a>
+          
+          <figure class="media-card" data-kind="photos" data-tags="evenement equipe produit entreprise">
+          <a href="a2spic2.jpg">
+            <img src="a2spic2.jpg" alt="&Eacute;v&eacute;nement d'entreprise" loading="lazy" decoding="async" />
+          </a>
+
+          <figure class="media-card" data-kind="photos" data-tags="evenement equipe produit entreprise">
+          <a href="a2spic3.jpg">
+            <img src="a2spic3.jpg" alt="&Eacute;v&eacute;nement d'entreprise" loading="lazy" decoding="async" />
+          </a>
+
+          <figure class="media-card" data-kind="photos" data-tags="evenement equipe produit entreprise">
+          <a href="a2spic4.jpg">
+            <img src="a2spic4.jpg" alt="&Eacute;v&eacute;nement d'entreprise" loading="lazy" decoding="async" />
+          </a>
+
+          <figure class="media-card" data-kind="photos" data-tags="evenement equipe produit entreprise">
+          <a href="a2spic5.jpg">
+            <img src="a2spic5.jpg" alt="&Eacute;v&eacute;nement d'entreprise" loading="lazy" decoding="async" />
+          </a>
+
+        </figure>
+        <figure class="media-card" data-kind="photos" data-tags="equipe travail bureau">
+          <a href="a2spic6.jpg">
+            <img src="a2spic6.jpg" alt="&Eacute;quipe au travail" loading="lazy" decoding="async" />
+          </a>
+          
+        </figure>
+        <figure class="media-card" data-kind="photos" data-tags="produit action demo">
+          <a href="a2spic7.jpg">
+            <img src="a2spic7.jpg" alt="Produit en action" loading="lazy" decoding="async" />
+          </a>
+
+          <figure class="media-card" data-kind="photos" data-tags="evenement equipe produit entreprise">
+          <a href="a2spic8.jpg">
+            <img src="a2spic8.jpg" alt="&Eacute;v&eacute;nement d'entreprise" loading="lazy" decoding="async" />
+          </a>
+          
+          <figure class="media-card" data-kind="photos" data-tags="evenement equipe produit entreprise">
+          <a href="a2spic9.jpg">
+            <img src="a2spic9.jpg" alt="&Eacute;v&eacute;nement d'entreprise" loading="lazy" decoding="async" />
+          </a>
+
+          <figure class="media-card" data-kind="photos" data-tags="evenement equipe produit entreprise">
+          <a href="a2spic10.jpg">
+            <img src="a2spic10.jpg" alt="&Eacute;v&eacute;nement d'entreprise" loading="lazy" decoding="async" />
+          </a>
+        </figure>
+        <!-- Ajouts: a2spic1, a2spic2, a2spic3, a2spic7, a2spic8, a2spic9, a2spic10 -->
+        <figure class="media-card" data-kind="photos" data-tags="evenement equipe">
+          <a href="a2spic1.jpg">
+            <img src="a2spic1.jpg" alt="Photo 1" loading="lazy" decoding="async" />
+          </a>
+        </figure>
+        <figure class="media-card" data-kind="photos" data-tags="evenement equipe">
+          <a href="a2spic2.jpg">
+            <img src="a2spic2.jpg" alt="Photo 2" loading="lazy" decoding="async" />
+          </a>
+        </figure>
+        <figure class="media-card" data-kind="photos" data-tags="produit action">
+          <a href="a2spic3.jpg">
+            <img src="a2spic3.jpg" alt="Photo 3" loading="lazy" decoding="async" />
+          </a>
+           <figure class="media-card" data-kind="photos" data-tags="produit action">
+          <a href="a2spic4.jpg">
+            <img src="a2spic4.jpg" alt="Photo 4" loading="lazy" decoding="async" />
+          </a>
+           <figure class="media-card" data-kind="photos" data-tags="produit action">
+          <a href="a2spic5.jpg">
+            <img src="a2spic5.jpg" alt="Photo 5" loading="lazy" decoding="async" />
+          </a>
+           <figure class="media-card" data-kind="photos" data-tags="produit action">
+          <a href="a2spic6.jpg">
+            <img src="a2spic6.jpg" alt="Photo 3" loading="lazy" decoding="async" />
+          </a>
+        </figure>
+        <figure class="media-card" data-kind="photos" data-tags="evenement">
+          <a href="a2spic7.jpg">
+            <img src="a2spic7.jpg" alt="Photo 7" loading="lazy" decoding="async" />
+          </a>
+        </figure>
+        <figure class="media-card" data-kind="photos" data-tags="equipe">
+          <a href="a2spic8.jpg">
+            <img src="a2spic8.jpg" alt="Photo 8" loading="lazy" decoding="async" />
+          </a>
+        </figure>
+        <figure class="media-card" data-kind="photos" data-tags="produit">
+          <a href="a2spic9.jpg">
+            <img src="a2spic9.jpg" alt="Photo 9" loading="lazy" decoding="async" />
+          </a>
+        </figure>
+        <figure class="media-card" data-kind="photos" data-tags="evenement">
+          <a href="a2spic10.jpg">
+            <img src="a2spic10.jpg" alt="Photo 10" loading="lazy" decoding="async" />
+          </a>
+        </figure>
+      </div>
+        </section>
+
+    <section id="videos" class="media-section" aria-labelledby="videos-title">
+      <h2 id="videos-title">Videos</Video></h2>
+      <div class="media-grid">
+        <figure class="media-card" data-kind="videos" data-tags="formation leadership interne" data-caption="Formation leadership">
+          <video preload="metadata" controls playsinline poster="a2spic1.jpg">
+            <source src="video1.mp4" type="video/mp4" />
+            Votre navigateur ne supporte pas la lecture de vid&eacute;os.
+          </video>
+          
+          
+        </figure>
+        <figure class="media-card" data-kind="videos" data-tags="presentation entreprise institutionnel" data-caption="Pr&eacute;sentation d'entreprise">
+          <video preload="metadata" controls playsinline poster="a2spic2.jpg">
+            <source src="video2.mp4" type="video/mp4" />
+            Votre navigateur ne supporte pas la lecture de vid&eacute;os.
+          </video>
+          
+          
+        </figure>
+        <figure class="media-card" data-kind="videos" data-tags="demonstration produit externe" data-caption="D&eacute;monstration produit">
+          <video preload="metadata" controls playsinline poster="a2spic3.jpg">
+            <source src="video3.mp4" type="video/mp4" />
+            Votre navigateur ne supporte pas la lecture de vid&eacute;os.
+          </video>
+          
+          
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modale vid&eacute;o (r&eacute;utilise styles globaux s'ils existent) -->
+  <div class="modal-overlay" id="video-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Lecture vid&eacute;o">
+    <div class="modal-content" role="document">
+      <button class="modal-close" aria-label="Fermer">&times;</button>
+      
+      <div class="modal-body">
+        <video id="modal-video" controls playsinline style="width:100%;max-height:60vh;border-radius:8px;outline:0"></video>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlay photo dÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©diÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â© -->
+  <div class="po-overlay" id="photo-overlay" aria-hidden="true" role="dialog" aria-label="Visionnage photo">
+    <div class="po-content">
+      <button class="po-close" aria-label="Fermer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <img class="po-img" alt=""/>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+  <script>
+  // Interactions M&eacute;diath&egrave;que
+  document.addEventListener('DOMContentLoaded', function(){
+    // Fallback: s'assurer que le contenu est visible mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªme si l'observer global n'ajoute pas .is-visible
+    try { document.querySelectorAll('.reveal').forEach(el=>el.classList.add('is-visible')); } catch(_){}
+    // Filtrage par chips
+    const chips = Array.from(document.querySelectorAll('.chip'));
+    const cards = Array.from(document.querySelectorAll('.media-card'));
+    const input = document.getElementById('media-search');
+    if (input) input.value = '';
+    function applyFilter(){
+      const active = (chips.find(c=>c.classList.contains('active'))?.dataset.filter)||'all';
+      const q = (input?.value||'').toLowerCase().trim();
+      cards.forEach(card=>{
+        const kind = card.dataset.kind; const tags = (card.dataset.tags||'').toLowerCase(); const cap = (card.dataset.caption||'').toLowerCase();
+        const matchKind = active==='all' || active===kind;
+        const matchText = !q || tags.includes(q) || cap.includes(q);
+        const show = matchKind && matchText;
+        card.style.display = show ? '' : 'none';
+      });
+    }
+    chips.forEach(ch=>{
+      ch.addEventListener('click', ()=>{ chips.forEach(x=>x.classList.toggle('active', x===ch)); applyFilter(); });
+      ch.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); ch.click(); }});
+    });
+    if (input) input.addEventListener('input', applyFilter);
+    applyFilter();
+    // Modale vid&eacute;o
+    const modal = document.getElementById('video-modal');
+    const modalVideo = document.getElementById('modal-video');
+    function openVideo(src){ if(!modal||!modalVideo) return; modalVideo.src = src; modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; modalVideo.play().catch(()=>{}); }
+    function closeVideo(){ if(!modal||!modalVideo) return; modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; modalVideo.pause(); modalVideo.removeAttribute('src'); modalVideo.load(); }
+    modal?.querySelector('.modal-close')?.addEventListener('click', closeVideo);
+    modal?.addEventListener('click', (e)=>{ if(e.target===modal) closeVideo(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && modal?.classList.contains('open')) closeVideo(); });
+    // Bouton overlay supprimÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©: lecture via contrÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â´les natifs uniquement
+
+    // GSAP animations
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReduced && window.gsap){
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from('.media-hero h1', { y: 12, autoAlpha: 0, duration: .6, ease: 'power2.out' });
+      gsap.from('.media-hero p', { y: 10, autoAlpha: 0, duration: .5, ease: 'power2.out', delay:.05 });
+      gsap.utils.toArray('.media-card').forEach((el,i)=>{
+        gsap.from(el, { y: 24, autoAlpha: 0, duration: .5, ease: 'power2.out', delay: i*0.04, scrollTrigger:{trigger: el, start: 'top 90%'} });
+      });
+    }
+
+    // AperÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§u vidÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©o compact: lecture muette au survol (2s) + clic = modale
+    const videos = Array.from(document.querySelectorAll('.media-card video'));
+    const finePointer = window.matchMedia('(pointer:fine)').matches;
+    function videoSrc(v){
+      const s = v.querySelector('source');
+      return (s && s.getAttribute('src')) || v.currentSrc || v.src || '';
+    }
+    if (videos.length){
+      videos.forEach(v=>{
+        // Clic pour ouvrir en grand dans la modale existante
+        v.addEventListener('click', ()=>{
+          const src = videoSrc(v);
+          if (src) {
+            // Assure l'arrÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªt du mini-aperÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§u avant ouverture
+            try{ v.pause(); v.currentTime = 0; }catch(_){}
+            if (typeof openVideo === 'function') openVideo(src);
+          }
+        });
+        // Hover preview lÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©ger (optionnel, pointer fin uniquement)
+        if (finePointer && !prefersReduced){
+          v.addEventListener('mouseenter', ()=>{
+            try{
+              v.muted = true;
+              v.play().then(()=>{
+                clearTimeout(v._previewTimer);
+                v._previewTimer = setTimeout(()=>{ try{ v.pause(); v.currentTime = 0; }catch(_){} }, 1800);
+              }).catch(()=>{});
+            }catch(_){ /* noop */ }
+          });
+          v.addEventListener('mouseleave', ()=>{
+            try{ clearTimeout(v._previewTimer); v.pause(); v.currentTime = 0; }catch(_){ }
+          });
+        }
+      });
+    }
+
+    // Visionnage photo (overlay dÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©diÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©)
+    const photoOverlay = document.getElementById('photo-overlay');
+    const photoImg = photoOverlay?.querySelector('.po-img');
+    const photoClose = photoOverlay?.querySelector('.po-close');
+    function openPhoto(src){ if(!photoOverlay||!photoImg) return; photoImg.src = src; photoOverlay.classList.add('open'); photoOverlay.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+    function closePhoto(){ if(!photoOverlay||!photoImg) return; photoOverlay.classList.remove('open'); photoOverlay.setAttribute('aria-hidden','true'); document.body.style.overflow=''; photoImg.removeAttribute('src'); }
+    photoClose?.addEventListener('click', closePhoto);
+    photoOverlay?.addEventListener('click', (e)=>{ if(e.target===photoOverlay) closePhoto(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && photoOverlay?.classList.contains('open')) closePhoto(); });
+    // Clic sur les liens photo
+    document.querySelectorAll('#photos .media-card a').forEach(a=>{
+      a.addEventListener('click', (e)=>{ e.preventDefault(); const src = a.getAttribute('href'); if(src) openPhoto(src); });
+    });
+  });
+  </script>
+</body>
+</html>
+
+
+
+
+
+

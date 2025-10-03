@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <!-- Metadonnees et SEO -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chiffres cl&eacute;s &ndash; Alliance Synergie Sant&eacute;</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind=config={};
+    tailwind.config = {
+      prefix: 'tw-',
+      corePlugins: { preflight: false },
+      theme: { extend: { colors: { brand: { DEFAULT: '#2f6b2f', dark: '#255825', light: '#e8f5ee' } } } }
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation principale -->
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="brand" href="index.html"><img src="logoa2s.svg" alt="Logo" /><span class="brand-text">Alliance Synergie Sant&eacute;</span></a>
+    <button class="menu-button" aria-label="Ouvrir le menu" aria-controls="primary-nav" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <ul id="primary-nav">
+      <li class="has-submenu" data-new>
+        <button class="nav-link active" aria-haspopup="true" aria-expanded="true">ENTREPRISE</button>
+        <ul class="submenu" aria-label="Sous-menu Entreprise">
+          <li><a href="mot-president.html">Mot du pr&eacute;sident</a></li>
+          <li><a href="historique.html">Historique</a></li>
+          <li><a href="organigramme.html">Organigramme</a></li>
+          <li><a class="active" aria-current="page" href="chiffres-cles.html">Chiffres cl&eacute;s</a></li>
+          <li><a href="chaine-de-valeurs.html">Cha&icirc;ne de valeurs</a></li>
+        </ul>
+      </li>
+     <li data-new><a href="metiers.html" class="nav-link active" aria-current="page">M&Eacute;TIERS</a></li>
+      <li data-new><a href="partenaires.html" class="nav-link">PARTENAIRES</a></li>
+      <li data-new><a href="carrieres.html" class="nav-link">Carri&egrave;res</a></li>
+      <li data-new><a href="mediatheque.html" class="nav-link">M&eacute;diath&egrave;que</a></li>
+      <li class="has-submenu" data-new>
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false">Strat&eacute;gie</button>
+        <ul class="submenu" aria-label="Sous-menu Strat&eacute;gie">
+          <li><a href="#vision-afrique">Vision pour l'Afrique</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="spacer"></div>
+  </nav>
+
+  <main class="tw-max-w-[1200px] tw-mx-auto tw-px-4 tw-py-8">
+    <header class="hero hist-hero">
+      <h1 class="hist-title"><span class="tone">Chiffres</span> <span class="strong">Cl&eacute;s</span></h1>
+    </header>
+    <section aria-label="Chiffres cl&eacute;s" class="tw-mt-4">
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="kpi-value">15+</div>
+          <div class="kpi-label">Ann&eacute;es d&rsquo;exp&eacute;rience</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">50+</div>
+          <div class="kpi-label">Produits certifi&eacute;s</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">200+</div>
+          <div class="kpi-label">Partenaires nationaux</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">10K+</div>
+          <div class="kpi-label">Clients satisfaits</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

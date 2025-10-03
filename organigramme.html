@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <!-- Metadonnees et SEO -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Organigramme &ndash; Alliance Synergie Sant&eacute;</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    tailwind=config={};
+  </script>
+  <script>
+    tailwind.config = {
+      prefix: 'tw-',
+      corePlugins: { preflight: false },
+      theme: { extend: { colors: { brand: { DEFAULT: '#2f6b2f', dark: '#255825', light: '#e8f5ee' } } } }
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Allow page to scroll on mobile */
+    html, body{min-height:100%; overflow-x:hidden; overflow-y:auto}
+    .hero.hero-illustrated{max-width:none; margin:0 auto; padding:0 20px; display:grid; place-items:center; grid-template-columns:1fr; gap:0; min-height:calc(100vh - var(--navH)); overflow:visible}
+    .hero-illustrated .hero-art{display:none !important}
+
+    /* --- Orgchart (page organigramme) --- */
+    .orgchart{--line:#dfe8e2; margin:0; padding:0 16px; box-sizing:border-box; overflow-x:auto; overflow-y:visible; max-width:100%; width:100%; -webkit-overflow-scrolling:touch; touch-action:pan-x pan-y; overscroll-behavior:contain; text-align:center}
+    .orgchart .oc{padding:0; margin:0; display:flex; justify-content:center; transform-origin: top left}
+    .orgchart .oc, .orgchart .oc ul{position:relative}
+    .orgchart .oc ul{padding-top:20px; display:flex; justify-content:center; gap:14px; margin:0}
+    .orgchart li{list-style:none; text-align:center; position:relative; padding:16px 4px 0}
+    /* connecteurs */
+    .orgchart li::before, .orgchart li::after{content:""; position:absolute; top:0; right:50%; width:50%; height:18px; border-top:2px dashed var(--line)}
+    .orgchart li::after{right:auto; left:50%; border-left:2px dashed var(--line)}
+    .orgchart li:only-child{padding-top:0}
+    .orgchart li:only-child::before, .orgchart li:only-child::after{display:none}
+    .orgchart li:first-child::before{border:0}
+    .orgchart li:last-child::after{border:0}
+    .orgchart .oc ul::before{content:""; position:absolute; top:0; left:50%; width:0; height:24px; border-left:2px dashed var(--line)}
+
+    /* Canvas wrapper used for scaling */
+    .oc-canvas{display:inline-block; position:relative; text-align:left}
+
+    /* Toolbar */
+    .oc-tools{position:sticky; top:8px; z-index:10; display:flex; gap:6px; justify-content:flex-end; margin:8px 0}
+    .oc-btn{background:#fff; border:1px solid #ecf0ed; border-radius:10px; padding:6px 10px; font:inherit; cursor:pointer; box-shadow:var(--shadow)}
+    .oc-btn:hover{background:#f5faf6}
+
+    /* cartes */
+    .oc-card{display:inline-block; min-width:180px; background:#fff; border:1px solid #ecf0ed; border-radius:14px; padding:12px 14px; box-shadow:var(--shadow)}
+    .oc-card .oc-name{margin:0; color:var(--text); font-weight:800}
+    .oc-card .oc-role{margin:4px 0 0; color:var(--muted); font-size:13px}
+    .oc-card.oc-ceo{background:#ffe072; border-color:#ffd44d}
+    .oc-card.oc-dir{background:#2f6b2f; color:#fff; border-color:#2f6b2f}
+    .oc-card.oc-dir .oc-role{color:#e8f0ea}
+    .oc-card.oc-dept{background:#eef7f0; border-color:#e3efe6}
+
+    /* responsive */
+    @media (max-width: 720px){
+      /* Stack vertically for readability */
+      .orgchart .oc{display:block}
+      .orgchart .oc ul{display:block; padding-top:14px}
+      .orgchart li{padding:12px 0 0}
+      .orgchart li::before, .orgchart li::after, .orgchart .oc ul::before{display:none}
+      .oc-card{min-width:200px; width:min(420px, 92vw)}
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation principale -->
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="brand" href="index.html"><img src="logoa2s.svg" alt="Logo" /><span class="brand-text">Alliance Synergie Sant&eacute;</span></a>
+    <button class="menu-button" aria-label="Ouvrir le menu" aria-controls="primary-nav" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <ul id="primary-nav">
+      <li class="has-submenu" data-new>
+        <button class="nav-link active" aria-haspopup="true" aria-expanded="true">ENTREPRISE</button>
+        <ul class="submenu" aria-label="Sous-menu Entreprise">
+          <li><a href="mot-president.html">Mot du pr&eacute;sident</a></li>
+          <li><a href="historique.html">Historique</a></li>
+          <li><a class="active" aria-current="page" href="organigramme.html">Organigramme</a></li>
+          <li><a href="chiffres-cles.html">Chiffres cl&eacute;s</a></li>
+          <li><a href="chaine-de-valeurs.html">Cha&icirc;ne de valeurs</a></li>
+        </ul>
+      </li>
+      <li data-new><a href="metiers.html" class="nav-link active" aria-current="page">M&Eacute;TIERS</a></li>
+      <li data-new><a href="partenaires.html" class="nav-link">PARTENAIRES</a></li>
+      <li data-new><a href="carrieres.html" class="nav-link">Carri&egrave;res</a></li>
+      <li data-new><a href="mediatheque.html" class="nav-link">M&eacute;diath&egrave;que</a></li>
+      <li class="has-submenu" data-new>
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false">Strat&eacute;gie</button>
+        <ul class="submenu" aria-label="Sous-menu Strat&eacute;gie">
+          <li><a href="#vision-afrique">Vision pour l'Afrique</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="spacer"></div>
+  </nav>
+
+  <section class="hero hero-illustrated">
+    <div class="orgchart" role="group" aria-label="Organigramme A2S">
+      <div class="oc-tools" role="toolbar" aria-label="Contr&ocirc;les de zoom">
+        <button class="oc-btn" data-action="fit" title="Ajuster">Ajuster</button>
+        <button class="oc-btn" data-action="reset" title="R&eacute;initialiser">100%</button>
+        <button class="oc-btn" data-action="minus" title="Zoom -">&minus;</button>
+        <button class="oc-btn" data-action="plus" title="Zoom +">+</button>
+      </div>
+      <div class="oc-canvas">
+      <ul class="oc">
+        <li>
+          <div class="oc-card oc-ceo">
+            <p class="oc-name">Pr&eacute;sident-directeur g&eacute;n&eacute;ral</p>
+            <p class="oc-role">Direction g&eacute;n&eacute;rale</p>
+          </div>
+          <ul>
+            <li>
+              <div class="oc-card oc-dir">
+                <p class="oc-name">Adjoint au DG</p>
+                <p class="oc-role">Direction</p>
+              </div>
+              <ul>
+                <li>
+                  <div class="oc-card oc-dir">
+                    <p class="oc-name">Responsable logistique</p>
+                    <p class="oc-role">Logistique</p>
+                  </div>
+                  <ul>
+                    <li>
+                      <div class="oc-card oc-dept">
+                        <p class="oc-name">Magasin</p>
+                        <p class="oc-role">Op&eacute;rations</p>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <div class="oc-card oc-dir">
+                    <p class="oc-name">Responsable finance</p>
+                    <p class="oc-role">Finance</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="oc-card oc-dir">
+                    <p class="oc-name">Responsable marketing</p>
+                    <p class="oc-role">Marketing &amp; Communication</p>
+                  </div>
+                  <ul>
+                    <li>
+                      <div class="oc-card oc-dept">
+                        <p class="oc-name">&Eacute;quipe AdSense</p>
+                        <p class="oc-role">Acquisition</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="oc-card oc-dept">
+                        <p class="oc-name">&Eacute;quipe t&eacute;l&eacute;conseil</p>
+                        <p class="oc-role">Relation clients</p>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <div class="oc-card oc-dir">
+                    <p class="oc-name">&Eacute;quipe IT</p>
+                    <p class="oc-role">Syst&egrave;mes &amp; Support</p>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="script.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const viewport = document.querySelector('.orgchart');
+      const canvasWrap = document.querySelector('.oc-canvas');
+      const canvas = canvasWrap ? canvasWrap.querySelector('.oc') : null;
+      const tools = document.querySelector('.oc-tools');
+      if (!viewport || !canvasWrap || !canvas) return;
+
+      let scale = 1, sw = 0, sh = 0;
+
+      function measure(){
+        // Temporarily reset to 1 to measure natural size
+        const prev = scale; scale = 1; canvas.style.transform = 'scale(1)';
+        sw = canvas.scrollWidth; sh = canvas.scrollHeight; scale = prev;
+      }
+
+      function apply(){
+        canvas.style.transform = `scale(${scale})`;
+        canvasWrap.style.width = (sw * scale) + 'px';
+        canvasWrap.style.height = (sh * scale) + 'px';
+      }
+
+      function fitAll(){
+        measure();
+        const vw = viewport.clientWidth - 24; // padding margin
+        // Use viewport height if available, fallback to window height
+        const vh = Math.max(viewport.clientHeight, window.innerHeight - 140);
+        const s = Math.min(vw / sw, vh / sh, 1);
+        scale = Math.max(0.3, Math.min(s, 1));
+        apply();
+      }
+
+      function zoom(delta){
+        scale = Math.max(0.3, Math.min(scale + delta, 1.5));
+        apply();
+      }
+
+      // Init
+      fitAll();
+      window.addEventListener('resize', fitAll);
+
+      // Tools
+      tools.addEventListener('click', (e)=>{
+        const btn = e.target.closest('.oc-btn'); if (!btn) return;
+        const a = btn.getAttribute('data-action');
+        if (a === 'fit') fitAll();
+        else if (a === 'reset'){ scale = 1; apply(); }
+        else if (a === 'plus') zoom(0.1);
+        else if (a === 'minus') zoom(-0.1);
+      });
+    });
+  </script>
+</body>
+</html>

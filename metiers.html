@@ -1,0 +1,210 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+  <!-- Metadonnees et SEO -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>M&eacute;tiers &ndash; Alliance Synergie Sant&eacute;</title>
+  <meta name="description" content="D&eacute;couvrez les m&eacute;tiers d'A2S : R&amp;D, qualit&eacute;, marketing, force de vente, logistique, partenariats, service client, IT.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind=config={};
+    tailwind.config = {
+      prefix: 'tw-', corePlugins: { preflight: false },
+      theme: { extend: { colors: { brand: { DEFAULT: '#2f6b2f', dark: '#255825', light: '#e8f5ee' } } } }
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    /* Mise en page & style fort */
+    .met-wrap{max-width:1100px;margin:0 auto;padding:28px 16px}
+    .met-hero{text-align:center;margin-bottom:14px}
+    .met-hero .title{font-weight:800;color:var(--text);font-size:clamp(26px,4vw,38px);margin:0}
+    .met-hero .sub{color:var(--muted);max-width:72ch;margin:8px auto 0}
+    .met-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;align-items:stretch}
+    .met-card{position:relative;background:#fff;border:1px solid #ecf0ed;border-radius:16px;box-shadow:var(--shadow);padding:18px;overflow:hidden;transition:transform .18s ease, box-shadow .18s ease}
+    .met-card::after{content:"";position:absolute;inset:-2px;border-radius:18px;padding:2px;background:linear-gradient(135deg,#2f6b2f,#58a358);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .18s ease}
+    .met-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(0,0,0,.12)}
+    .met-card:hover::after{opacity:1}
+    .met-icon{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;color:#2f6b2f;background:#e8f5ee;margin-bottom:10px}
+    .met-card h3{margin:0 0 6px;color:var(--text);font-weight:800}
+    .met-card p{margin:0;color:var(--muted)}
+    /* Accordions accessibles */
+    .acc{border:1px solid #ecf0ed;border-radius:12px;background:#fff;box-shadow:var(--shadow)}
+    .acc+ .acc{margin-top:10px}
+    .acc summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;font-weight:800;color:var(--text)}
+    .acc summary::-webkit-details-marker{display:none}
+    .acc .acc-body{padding:0 16px 16px;color:var(--muted)}
+    .acc .chev{transition:transform .2s ease}
+    details[open] .chev{transform:rotate(180deg)}
+  </style>
+</head>
+<body>
+  <!-- Navigation principale -->
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="brand" href="index.html"><img src="logoa2s.svg" alt="Logo" /><span class="brand-text">Alliance Synergie Sant&eacute;</span></a>
+    <button class="menu-button" aria-label="Ouvrir le menu" aria-controls="primary-nav" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <ul id="primary-nav">
+      <li class="has-submenu" data-new>
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false">ENTREPRISE</button>
+        <ul class="submenu" aria-label="Sous-menu Entreprise">
+          <li><a href="mot-president.html">Mot du pr&eacute;sident</a></li>
+          <li><a href="historique.html">Historique</a></li>
+          <li><a href="organigramme.html">Organigramme</a></li>
+          <li><a href="chiffres-cles.html">Chiffres cl&eacute;s</a></li>
+          <li><a href="chaine-de-valeurs.html">Cha&icirc;ne de valeurs</a></li>
+        </ul>
+      </li>
+      <li data-new><a href="metiers.html" class="nav-link active" aria-current="page">M&Eacute;TIERS</a></li>
+      <li data-new><a href="partenaires.html" class="nav-link">PARTENAIRES</a></li>
+      <li data-new><a href="carrieres.html" class="nav-link">Carri&egrave;res</a></li>
+      <li data-new><a href="mediatheque.html" class="nav-link">M&eacute;diath&egrave;que</a></li>
+      <li class="has-submenu" data-new>
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false">Strat&eacute;gie</button>
+        <ul class="submenu" aria-label="Sous-menu Strat&eacute;gie">
+          <li><a href="#vision-afrique">Vision pour l'Afrique</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="spacer"></div>
+  </nav>
+
+  <section class="hero hero-illustrated">
+    <div class="met-wrap">
+      <header class="met-hero">
+        <h1 class="title">Nos M&eacute;tiers</h1>
+        <p class="sub">Des expertises compl&eacute;mentaires au service de la dermo-cosm&eacute;tique et de la sant&eacute;.</p>
+      </header>
+
+      <!-- Grille des domaines d'expertise -->
+      <div class="met-grid">
+        <article class="met-card reveal" style="--i:0">
+          <div class="met-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M6 3h12M9 3v5l-5 8a6 6 0 0010 0l-5-8V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>R&amp;D &amp; Innovation</h3>
+          <p>Conception, essais et am&eacute;lioration continue de solutions adapt&eacute;es.</p>
+          <p><a class="btn" href="#">En savoir plus</a></p>
+        </article>
+        <article class="met-card reveal" style="--i:1">
+          <div class="met-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Qualit&eacute; &amp; R&eacute;glementaire</h3>
+          <p>Conformit&eacute;, contr&ocirc;le et tra&ccedil;abilit&eacute; des gammes A2S.</p>
+          <p><a class="btn" href="#">En savoir plus</a></p>
+        </article>
+        <article class="met-card reveal" style="--i:2">
+          <div class="met-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M3 11l18-5-4 12-6-3-3 4-2-8z" stroke="currentColor" stroke-width="2" fill="none"/></svg></div>
+          <h3>Marketing &amp; Communication</h3>
+          <p>Positionnement, identit&eacute; et activation multicanale.</p>
+          <p><a class="btn" href="#">En savoir plus</a></p>
+        </article>
+        <article class="met-card reveal" style="--i:3">
+          <div class="met-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M4 7h16M6 7v10a3 3 0 003 3h6a3 3 0 003-3V7" stroke="currentColor" stroke-width="2"/><path d="M9 7V5a3 3 0 013-3 3 3 0 013 3v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h3>Visite m&eacute;dicale &amp; Force de vente</h3>
+          <p>Accompagnement terrain et relation praticiens.</p>
+          <p><a class="btn" href="#">En savoir plus</a></p>
+        </article>
+        <article class="met-card reveal" style="--i:4">
+          <div class="met-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M3 16l2-7h14l2 7H3z" stroke="currentColor" stroke-width="2"/><path d="M5 16v3a1 1 0 001 1h12a1 1 0 001-1v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h3>Logistique &amp; Distribution</h3>
+          <p>R&eacute;ception, stockage, pr&eacute;paration et livraison.</p>
+          <p><a class="btn" href="#">En savoir plus</a></p>
+        </article>
+        <article class="met-card reveal" style="--i:5">
+          <div class="met-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M8 11a4 4 0 118 0v1h2a3 3 0 110 6H6a3 3 0 110-6h2v-1z" stroke="currentColor" stroke-width="2"/></svg></div>
+          <h3>Partenariats &amp; Business Dev</h3>
+          <p>Accords strat&eacute;giques et ouverture Afrique.</p>
+          <p><a class="btn" href="#">En savoir plus</a></p>
+        </article>
+        <article class="met-card reveal" style="--i:6">
+          <div class="met-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M12 1l3 5 6 1-4 4 1 6-6-3-6 3 1-6-4-4 6-1 3-5z" stroke="currentColor" stroke-width="2" fill="none"/></svg></div>
+          <h3>Service client &amp; T&eacute;l&eacute;conseil</h3>
+          <p>&Eacute;coute et r&eacute;solution continue.</p>
+          <p><a class="btn" href="#">En savoir plus</a></p>
+        </article>
+        <article class="met-card reveal" style="--i:7">
+          <div class="met-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h4" stroke="currentColor" stroke-width="2"/></svg></div>
+          <h3>IT &amp; Syst&egrave;mes</h3>
+          <p>Soutien applicatif et s&eacute;curit&eacute;.</p>
+          <p><a class="btn" href="#">En savoir plus</a></p>
+        </article>
+      </div>
+
+      <!-- Liste d&eacute;taill&eacute;e (accordions) -->
+      <section aria-label="Liste des m&eacute;tiers" class="tw-mt-8">
+        <details class="acc reveal" open>
+          <summary>
+            <span>Visite m&eacute;dicale &amp; Force de vente</span>
+            <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="acc-body"><p>Relation praticiens, formation produit et couverture nationale.</p></div>
+        </details>
+        <details class="acc reveal">
+          <summary>
+            <span>Partenariats &amp; Business Development</span>
+            <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="acc-body"><p>Identification d'opportunit&eacute;s, contrats et structuration des offres.</p></div>
+        </details>
+        <details class="acc reveal">
+          <summary>
+            <span>Service client &amp; T&eacute;l&eacute;conseil</span>
+            <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="acc-body"><p>Accompagnement et am&eacute;lioration continue de l'exp&eacute;rience client.</p></div>
+        </details>
+        <details class="acc reveal">
+          <summary>
+            <span>IT &amp; Syst&egrave;mes</span>
+            <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="acc-body"><p>S&eacute;curit&eacute;, automatisation et support aux &eacute;quipes.</p></div>
+        </details>
+      </section>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+    // Animations fortes pour la page "Metiers"
+    document.addEventListener('DOMContentLoaded', function(){
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion || !window.gsap) return;
+      gsap.registerPlugin(ScrollTrigger);
+      // Grille: apparition en cascade avec rotation legere
+      gsap.utils.toArray('.met-card').forEach((el, i)=>{
+        gsap.from(el, {
+          autoAlpha: 0, y: 30, x: i%2? 18 : -18, rotate: i%2? 2 : -2,
+          duration: 0.6, ease: 'power2.out', delay: i*0.06,
+          scrollTrigger: { trigger: el, start: 'top 85%' }
+        });
+      });
+      // Accordions: fade + slide
+      gsap.from('.acc', {
+        autoAlpha: 0, y: 20, duration: 0.6, ease: 'power2.out',
+        stagger: 0.12, scrollTrigger: { trigger: '.acc', start: 'top 90%' }
+      });
+      // Tilt subtil au survol (souris uniquement)
+      const mq = window.matchMedia('(pointer:fine)');
+      if (mq.matches){
+        const maxTilt = 6;
+        document.querySelector('.met-grid')?.addEventListener('mousemove', (e)=>{
+          const card = e.target.closest('.met-card'); if (!card) return;
+          const r = card.getBoundingClientRect(); const cx = r.left + r.width/2; const cy = r.top + r.height/2;
+          const rx = ((e.clientY - cy) / r.height) * -maxTilt;
+          const ry = ((e.clientX - cx) / r.width) * maxTilt;
+          card.style.transform = `rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-2px)`;
+        });
+        document.querySelector('.met-grid')?.addEventListener('mouseleave', ()=>{
+          gsap.to('.met-card', { rotateX: 0, rotateY: 0, y: 0, duration: 0.25, ease: 'power2.out' });
+        });
+      }
+    });
+  </script>
+  <script src="script.js" defer></script>
+</body>
+</html>

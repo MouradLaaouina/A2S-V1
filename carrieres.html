@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carrières – Alliance Synergie Santé</title>
+  <meta name="description" content="Rejoignez notre équipe ! Contribuez à notre mission et faites la différence. Découvrez pourquoi travailler avec nous et comment postuler." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind=config={};
+    tailwind.config = {
+      prefix: 'tw-', corePlugins: { preflight: false },
+      theme: { extend: { colors: { brand: { DEFAULT: '#2f6b2f', dark: '#255825', light: '#e8f5ee' } } } }
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    /* Carrières: style fort et mémorable, non intrusif pour le reste du site */
+    .car-wrap{max-width:1140px;margin:0 auto;padding:28px 16px}
+    .car-hero{position:relative;overflow:hidden;border-radius:16px;background-image:linear-gradient(135deg, rgba(255,255,255,0.88), rgba(232,245,238,0.88)), url('recrutement.jpg');background-size:cover;background-position:center;background-repeat:no-repeat;box-shadow:var(--shadow);}
+    .car-hero-inner{display:grid;grid-template-columns:1.1fr 0.9fr;gap:clamp(18px,4vw,36px);align-items:center;padding:clamp(28px,6vw,64px)}
+    /* Réduire la largeur du hero uniquement */
+    .car-hero .car-hero-inner.car-wrap{max-width:980px}
+    .car-hero .kicker{display:inline-block;color:#2f6b2f;background:#e8f5ee;border:1px solid #d6ebdd;padding:6px 10px;border-radius:999px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:12px}
+    .car-title{font-weight:900;line-height:1.05;margin:8px 0 12px;font-size:clamp(30px,6vw,56px);background:linear-gradient(90deg,#2f6b2f 0%,#3e8a3e 30%,#58a358 60%,#2f6b2f 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 16px rgba(47,107,47,.12))}
+    .car-title.shine{background-size:200% 100%;animation:shine 4.5s linear infinite}
+    @keyframes shine{from{background-position:0% 50%}to{background-position:200% 50%}}
+    .car-sub{color:var(--muted);font-size:clamp(16px,2.4vw,18px);max-width:70ch;margin:0}
+    .car-cta{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:10px 16px;border-radius:12px;background:#2f6b2f;color:#fff;text-decoration:none;font-weight:800;border:2px solid transparent;box-shadow:0 14px 30px rgba(47,107,47,.22);transition:transform .18s ease, box-shadow .18s ease, background .18s ease}
+    .car-cta:hover{transform:translateY(-3px);background:#255825;box-shadow:0 20px 40px rgba(47,107,47,.28)}
+    .car-cta svg{opacity:.9}
+    .car-visual{display:grid;place-items:center}
+    /* Illustration recrutement */
+    .car-illu{width:clamp(220px,32vw,360px);height:auto;display:block;filter:drop-shadow(0 18px 28px rgba(0,0,0,.12))}
+    .car-hero::before{content:"";position:absolute;inset:-40% -20% auto auto;width:80%;height:110%;transform:rotate(8deg);background:conic-gradient(from 180deg at 50% 50%, rgba(88,163,88,.08), rgba(47,107,47,.0) 30%, rgba(88,163,88,.12) 60%, rgba(47,107,47,.0));pointer-events:none}
+
+    /* Sections */
+    .car-section{margin-top:28px}
+    .car-section header h2{margin:0 0 6px;font-weight:900;font-size:clamp(22px,3vw,28px);color:var(--text)}
+    .car-section header p{margin:0;color:var(--muted)}
+    /* Liste texte (Pourquoi) */
+    .car-list{list-style:none;padding-left:0;margin:10px 0 6px 0}
+    .car-list li{position:relative;padding-left:26px;margin:6px 0}
+    .car-list li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:999px;background:#2f6b2f;box-shadow:0 0 0 6px #e8f5ee}
+
+    /* Highlights (Pourquoi) */
+    .car-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:14px}
+    .car-card{position:relative;background:#fff;border:1px solid #ecf0ed;border-radius:16px;padding:16px;box-shadow:var(--shadow);transition:transform .18s ease, box-shadow .18s ease}
+    .car-card::after{content:"";position:absolute;inset:-2px;border-radius:18px;padding:2px;background:linear-gradient(135deg,#2f6b2f,#58a358);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .18s ease}
+    .car-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(0,0,0,.12)}
+    .car-card:hover::after{opacity:1}
+    .car-ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;color:#2f6b2f;background:#e8f5ee;margin-bottom:8px}
+    .car-card h3{margin:0 0 4px;font-weight:800;font-size:16px}
+    .car-card p{margin:0;color:var(--muted)}
+
+    /* Chips (domaines) */
+    .car-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .car-chip{padding:6px 10px;border-radius:999px;background:#f5faf6;border:1px solid #d9ecdf;color:#2f6b2f;font-weight:700;font-size:12px}
+
+    /* Steps (comment postuler) */
+    .car-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:14px}
+    .car-step{background:#fff;border:1px solid #ecf0ed;border-radius:16px;padding:16px;box-shadow:var(--shadow);position:relative}
+    .step-badge{position:absolute;top:12px;right:12px;background:#2f6b2f;color:#fff;border-radius:999px;padding:4px 10px;font-weight:800;font-size:12px}
+    .car-step h3{margin:0 0 8px;font-weight:800}
+    .car-step p{margin:6px 0;color:var(--muted)}
+
+    /* Reveal animations (use existing .reveal behavior) */
+    .car-card.reveal{transition-delay:calc(var(--i,0)*90ms)}
+    .car-step.reveal{transition-delay:calc(var(--i,0)*110ms)}
+
+    /* Responsive */
+    @media(max-width: 900px){ .car-hero-inner{grid-template-columns:1fr} .car-visual{order:-1} }
+  </style>
+</head>
+<body>
+  <!-- Navigation principale -->
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="brand" href="index.html"><img src="logoa2s.svg" alt="Logo" /><span class="brand-text">Alliance Synergie Santé</span></a>
+    <button class="menu-button" aria-label="Ouvrir le menu" aria-controls="primary-nav" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <ul id="primary-nav">
+      <li class="has-submenu" data-new>
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false">ENTREPRISE</button>
+        <ul class="submenu" aria-label="Sous-menu Entreprise">
+          <li><a href="mot-president.html">Mot du président</a></li>
+          <li><a href="historique.html">Historique</a></li>
+          <li><a href="organigramme.html">Organigramme</a></li>
+          <li><a href="chiffres-cles.html">Chiffres clés</a></li>
+          <li><a href="chaine-de-valeurs.html">Chaîne de valeurs</a></li>
+        </ul>
+      </li>
+      <li data-new><a href="metiers.html" class="nav-link">MÉTIERS</a></li>
+      <li data-new><a href="partenaires.html" class="nav-link">PARTENAIRES</a></li>
+      <li data-new><a href="carrieres.html" class="nav-link active" aria-current="page">Carrières</a></li>
+      <li data-new><a href="mediatheque.html" class="nav-link">Médiathèque</a></li>
+      <li class="has-submenu" data-new>
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false">Stratégie</button>
+        <ul class="submenu" aria-label="Sous-menu Stratégie">
+          <li><a href="#vision-afrique">Vision pour l'Afrique</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="spacer"></div>
+  </nav>
+
+  <!-- Hero / Accroche -->
+  <section class="car-hero tw-mt-3" role="region" aria-label="Carrières - Rejoignez notre équipe">
+    <div class="car-hero-inner car-wrap">
+      <header>
+        <span class="kicker">Carrières</span>
+        <h1 class="car-title shine">Rejoignez notre équipe&nbsp;!</h1>
+        <p class="car-sub">Contribuez à notre mission et faites la différence avec Alliance Synergie Santé</p>
+        
+      </header>
+      <div class="car-visual">
+        <svg class="car-illu" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration recrutement">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0%" stop-color="#2f6b2f" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="#58a358" stop-opacity="0.95"/>
+            </linearGradient>
+          </defs>
+          <!-- Carte CV -->
+          <rect x="36" y="56" width="248" height="180" rx="14" fill="#ffffff" stroke="#dce9df" stroke-width="2"/>
+          <rect x="52" y="72" width="56" height="56" rx="10" fill="#e8f5ee"/>
+          <circle cx="80" cy="96" r="18" fill="url(#g1)"/>
+          <rect x="120" y="78" width="120" height="10" rx="5" fill="#2f6b2f" opacity="0.9"/>
+          <rect x="120" y="98" width="140" height="8" rx="4" fill="#9ebca3"/>
+          <rect x="120" y="114" width="132" height="8" rx="4" fill="#cbd9cf"/>
+          <rect x="52" y="140" width="208" height="8" rx="4" fill="#cbd9cf"/>
+          <rect x="52" y="156" width="188" height="8" rx="4" fill="#cbd9cf"/>
+          <rect x="52" y="172" width="168" height="8" rx="4" fill="#cbd9cf"/>
+          <!-- Loupe -->
+          <g transform="translate(196,188)">
+            <circle cx="0" cy="0" r="30" fill="none" stroke="#2f6b2f" stroke-width="6"/>
+            <path d="M18 18 L44 44" stroke="#2f6b2f" stroke-width="6" stroke-linecap="round"/>
+          </g>
+          <!-- Badge validation -->
+          <circle cx="262" cy="60" r="16" fill="#2f6b2f"/>
+          <path d="M254 60 l6 6 10-12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Décor -->
+          <rect x="0" y="244" width="320" height="12" rx="6" fill="#e8f5ee"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <main class="car-wrap">
+    <!-- Pourquoi travailler avec nous ? -->
+    <section class="car-section" role="region" aria-label="Pourquoi travailler avec nous">
+      <header class="reveal">
+        <h2>Pourquoi travailler avec nous&nbsp;?</h2>
+        <p>Chez Alliance Synergie Santé, nous recherchons des talents motivés pour rejoindre notre aventure et contribuer à notre vision.</p>
+      </header>
+      <ul class="car-list reveal" aria-label="Avantages à travailler avec nous">
+        <li>Culture collaborative : Une équipe où chaque voix compte.</li>
+        <li>Opportunités de croissance : Des projets stimulants et des possibilités d’évolution.</li>
+        
+        <li>Équilibre : Nous valorisons le bien-être et l’équilibre entre vie professionnelle et personnelle.</li>
+      </ul>
+      <!-- car-grid removed: start
+        <article class="car-card reveal" style="--i:0">
+          <div class="car-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M4 12l4 4 12-12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Culture collaborative</h3>
+          <p>Une équipe où chaque voix compte.</p>
+        </article>
+        <article class="car-card reveal" style="--i:1">
+          <div class="car-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h3>Opportunités de croissance</h3>
+          <p>Des projets stimulants et des possibilités d’évolution.</p>
+        </article>
+        <article class="car-card reveal" style="--i:2">
+          <div class="car-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M12 2l3 7h7l-5.5 4.1L19 21l-7-4.5L5 21l2.5-7.9L2 9h7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+          <h3>Impact</h3>
+          <p>Participez à des initiatives qui font une différence.</p>
+        </article>
+        <article class="car-card reveal" style="--i:3">
+          <div class="car-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Équilibre</h3>
+          <p>Nous valorisons le bien-être et l’équilibre entre vie professionnelle et personnelle.</p>
+        </article>
+      car-grid removed: end -->
+    </section>
+
+    <!-- Postes à pourvoir -->
+    <section class="car-section" role="region" aria-label="Postes à pourvoir">
+      <header class="reveal">
+        <h2>Postes à pourvoir</h2>
+        <p>Nous recherchons des talents dans divers domaines, tels que développement logiciel, marketing, design, gestion de projet, etc. Que vous soyez un professionnel expérimenté ou en début de carrière, envoyez-nous votre candidature&nbsp;!</p>
+      </header>
+      <div class="car-chips reveal" aria-label="Exemples de domaines">
+        <span class="car-chip">Développement logiciel</span>
+        <span class="car-chip">Marketing</span>
+        <span class="car-chip">Design</span>
+        <span class="car-chip">Gestion de projet</span>
+        <span class="car-chip">Support/Service client</span>
+      </div>
+    </section>
+
+    <!-- Comment postuler ? -->
+    <section class="car-section" role="region" aria-label="Comment postuler">
+      <header class="reveal">
+        <h2>Comment postuler&nbsp;?</h2>
+        <p>Pour rejoindre notre équipe, envoyez votre candidature par e-mail à <a href="mailto:contact@a2s.co.ma" class="tw-text-brand tw-font-bold">contact@a2s.co.ma</a> avec les documents suivants&nbsp;:</p>
+      </header>
+      <!-- removed car-steps block <div>
+        <article class="car-step reveal" style="--i:0">
+          <span class="step-badge">Étape 1</span>
+          <h3>Votre CV</h3>
+          <p>Mettez en avant vos compétences et expériences pertinentes.</p>
+        </article>
+        <article class="car-step reveal" style="--i:1">
+          <span class="step-badge">Étape 2</span>
+          <h3>Lettre de motivation</h3>
+          <p>Expliquez pourquoi vous souhaitez nous rejoindre et ce que vous pouvez apporter.</p>
+        </article>
+        <article class="car-step reveal" style="--i:2">
+          <span class="step-badge">Optionnel</span>
+          <h3>Portfolio / Travaux</h3>
+          <p>Un portfolio ou des exemples de travaux (si applicable).</p>
+        </article>
+      </div> -->
+      <p class="tw-mt-3 tw-text-slate-600 reveal">Objet de l’e-mail&nbsp;: Indiquez le poste visé ou «&nbsp;Candidature spontanée&nbsp;».</p>
+      
+    </section>
+
+    <!-- Questions -->
+    <section class="car-section" role="region" aria-label="Contact recrutement">
+      <header class="reveal">
+        <h2>Des questions&nbsp;?</h2>
+        <p>Contactez-nous à <a href="mailto:contact@a2s.co.ma" class="tw-text-brand tw-font-bold">contact@a2s.co.ma</a> pour toute question sur les opportunités ou le processus de candidature.</p>
+      </header>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script src="script.js" defer></script>
+  <script>
+    // Animations dédiées Carrières (respecte prefers-reduced-motion)
+    document.addEventListener('DOMContentLoaded', function(){
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || !window.gsap) return;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from('.car-bubble, .car-illu', { scale: 0.8, autoAlpha: 0, duration: 0.8, ease: 'power2.out', delay: 0.1 });
+      gsap.from('.car-title', { y: 12, autoAlpha: 0, duration: 0.6, ease: 'power2.out' });
+      gsap.utils.toArray('.car-card').forEach((el,i)=>{
+        gsap.from(el, { y: 24, autoAlpha: 0, duration: 0.5, ease: 'power2.out', delay: i*0.08, scrollTrigger:{trigger:el, start:'top 88%'} });
+      });
+      gsap.utils.toArray('.car-step').forEach((el,i)=>{
+        gsap.from(el, { y: 26, autoAlpha: 0, duration: 0.55, ease: 'power2.out', delay: i*0.1, scrollTrigger:{trigger:el, start:'top 90%'} });
+      });
+    });
+  </script>
+</body>
+</html>

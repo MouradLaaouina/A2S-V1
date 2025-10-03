@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <!-- Metadonnees et SEO -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Partenaires &ndash; Alliance Synergie Sant&eacute;</title>
+  <meta name="description" content="Nos partenaires en dermo‑cosm&eacute;tique et sant&eacute;: marques et laboratoires r&eacute;f&eacute;rents au Maroc et &agrave; l'international.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind=config={};
+    tailwind.config = { prefix: 'tw-', corePlugins: { preflight: false }, theme: { extend: { colors: { brand: { DEFAULT: '#2f6b2f', dark: '#255825', light: '#e8f5ee' } } } } };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .partners-hero{display:grid;place-items:center;min-height:calc(100vh - var(--navH));}
+    .partners-wrap{max-width:1100px;margin:0 auto;padding:24px 16px;text-align:center}
+    .partners-title{margin:0 0 10px;font-weight:800;font-size:clamp(22px,3.2vw,32px);color:var(--text)}
+    .partners-sub{margin:0 auto 18px;max-width:68ch;color:var(--muted)}
+    .partners-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;justify-items:center;margin-top:16px}
+    .partner-card{background:#fff;border:1px solid #ecf0ed;border-radius:14px;box-shadow:var(--shadow);padding:18px;display:grid;place-items:center;transition:transform .18s ease, box-shadow .18s ease, filter .18s ease}
+    .partner-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(0,0,0,.12)}
+    .partner-card img{max-width:140px;max-height:70px;object-fit:contain;filter:grayscale(100%);}
+    .partner-card:hover img{filter:grayscale(0%)}
+  </style>
+</head>
+<body>
+  <!-- Navigation principale -->
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="brand" href="index.html"><img src="logoa2s.svg" alt="Logo" /><span class="brand-text">Alliance Synergie Sant&eacute;</span></a>
+    <button class="menu-button" aria-label="Ouvrir le menu" aria-controls="primary-nav" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <ul id="primary-nav">
+      <li class="has-submenu" data-new>
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false">ENTREPRISE</button>
+        <ul class="submenu" aria-label="Sous-menu Entreprise">
+          <li><a href="mot-president.html">Mot du pr&eacute;sident</a></li>
+          <li><a href="historique.html">Historique</a></li>
+          <li><a href="organigramme.html">Organigramme</a></li>
+          <li><a href="chiffres-cles.html">Chiffres cl&eacute;s</a></li>
+          <li><a href="chaine-de-valeurs.html">Cha&icirc;ne de valeurs</a></li>
+        </ul>
+      </li>
+      <li data-new><a href="metiers.html" class="nav-link active" aria-current="page">M&Eacute;TIERS</a></li>
+      <li data-new><a href="partenaires.html" class="nav-link">PARTENAIRES</a></li>
+      <li data-new><a href="carrieres.html" class="nav-link">Carri&egrave;res</a></li>
+      <li data-new><a href="mediatheque.html" class="nav-link">M&eacute;diath&egrave;que</a></li>
+      <li class="has-submenu" data-new>
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false">Strat&eacute;gie</button>
+        <ul class="submenu" aria-label="Sous-menu Strat&eacute;gie">
+          <li><a href="#vision-afrique">Vision pour l'Afrique</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="spacer"></div>
+  </nav>
+
+  <section class="hero hero-illustrated partners-hero">
+    <div class="partners-wrap">
+      <h1 class="partners-title">Nos partenaires</h1>
+      <p class="partners-sub">Des marques et laboratoires qui partagent nos valeurs d&rsquo;innovation, de qualit&eacute; et de durabilit&eacute;.</p>
+
+      <div class="partners-grid">
+        <div class="partner-card"><img src="dcap.svg" alt="DCAP"></div>
+        <div class="partner-card"><img src="dwhite.svg" alt="D‑White"></div>
+        <div class="partner-card"><img src="sensilis.png" alt="Sensilis"></div>
+        <div class="partner-card"><img src="cumlaude lab.png" alt="Cumlaude Lab"></div>
+        <div class="partner-card"><img src="castera.png" alt="Cast&eacute;ra"></div>
+        <div class="partner-card"><img src="buccotherm.svg" alt="Buccotherm"></div>
+        <div class="partner-card"><img src="babe (2).png" alt="Bab&eacute;"></div>
+        <div class="partner-card"><img src="florame.png" alt="Florame"></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

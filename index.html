@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="fr" style="scroll-behavior: smooth;">
+<head>
+  <!-- Metadonnees et SEO -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Alliance Synergie Santé (A2S) est une société marocaine spécialisée dans des solutions dermo‑cosmétiques innovantes, basées à Casablanca.">
+  <meta name="keywords" content="dermo-cosmétique, santé, beauté, Maroc, A2S, gynécologie, dermatologie, médecine esthétique">
+  <meta name="author" content="Alliance Synergie Santé">
+  <meta property="og:title" content="Alliance Synergie Santé - Solutions Dermo‑Cosmétiques">
+  <meta property="og:description" content="A2S propose au Maroc des solutions dermo‑cosmétiques innovantes et durables pour les professionnels de la santé et de la beauté.">
+  <meta property="og:image" content="https://a2s.ma/logoa2s.png">
+  <meta property="og:url" content="https://a2s.ma">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Alliance Synergie Sant&eacute; - Accueil">
+  <meta name="twitter:description" content="D&eacute;couvrez A2S, votre partenaire pour des solutions dermo‑cosm&eacute;tiques innovantes au Maroc.">
+  <meta name="twitter:image" content="https://a2s.ma/logoa2s.png">
+  <title>Alliance Synergie Sant&eacute; &ndash; Solutions Dermo‑Cosm&eacute;tique</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Alliance Synergie Sant\u00E9",
+    "alternateName": "A2S",
+    "url": "https://a2s.ma",
+    "logo": "https://a2s.ma/logoa2s.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+212522123456",
+      "contactType": "customer service",
+      "email": "contact@a2s.ma",
+      "areaServed": "MA",
+      "availableLanguage": ["French", "Arabic"]
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "145 avenue Hassan II, 1er \u00E9t., appt. 3, Parc de la Ligue arabe",
+      "addressLocality": "Casablanca",
+      "addressCountry": "MA"
+    },
+    "sameAs": [
+      "https://facebook.com/a2s",
+      "https://linkedin.com/company/a2s"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Alliance Synergie Sant\u00E9 - Accueil",
+    "description": "A2S, bas\u00E9e \u00E0 Casablanca, propose des solutions dermo‑cosm\u00E9tiques innovantes et durables pour les professionnels de la sant\u00E9 et de la beaut\u00E9 au Maroc.",
+    "url": "https://a2s.ma",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Alliance Synergie Sant\u00E9",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://a2s.ma/logoa2s.png"
+      }
+    }
+  }
+  </script>
+  <script>
+    tailwind = { config: {} };
+    tailwind.config = {
+      prefix: 'tw-',
+      corePlugins: { preflight: false },
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#2f6b2f', dark: '#255825', light: '#e8f5ee' }
+          }
+        }
+      }
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.css"></noscript>
+  <style>/* minimal critical to ensure hidden menu on mobile if CSS blocked */ @media(max-width:768px){ #primary-nav{display:none} .nav.open #primary-nav{display:block} }</style>
+</head>
+<body>
+  <!-- Navigation principale -->
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="brand" href="index.html"><img src="logoa2s.svg" alt="Logo" /><span class="brand-text">Alliance Synergie Sant&eacute;</span></a>
+    <button class="menu-button" aria-label="Ouvrir le menu" aria-controls="primary-nav" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <ul id="primary-nav">
+      <li class="has-submenu" data-new>
+        <button class="nav-link active" aria-haspopup="true" aria-expanded="true">ENTREPRISE</button>
+        <ul class="submenu" aria-label="Sous-menu Entreprise">
+          <li><a href="mot-president.html">Mot du pr&eacute;sident</a></li>
+          <li><a href="historique.html">Historique</a></li>
+          <li><a href="organigramme.html">Organigramme</a></li>
+          <li><a class="active" aria-current="page" href="chiffres-cles.html">Chiffres cl&eacute;s</a></li>
+          <li><a href="chaine-de-valeurs.html">Cha&icirc;ne de valeurs</a></li>
+        </ul>
+      </li>
+      <li data-new><a href="metiers.html" class="nav-link active" aria-current="page">M&Eacute;TIERS</a></li>
+      <li data-new><a href="partenaires.html" class="nav-link">PARTENAIRES</a></li>
+      <li data-new><a href="carrieres.html" class="nav-link">Carri&egrave;res</a></li>
+      <li data-new><a href="mediatheque.html" class="nav-link">M&eacute;diath&egrave;que</a></li>
+      <li class="has-submenu" data-new>
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false">Strat&eacute;gie</button>
+        <ul class="submenu" aria-label="Sous-menu Strat&eacute;gie">
+          <li><a href="#vision-afrique">Vision pour l'Afrique</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="spacer"></div>
+  </nav>
+
+  <!-- Contenu principal -->
+  <main class="tw-max-w-[1200px] tw-mx-auto tw-px-4 tw-py-8">
+    <section class="hero hero-home" role="region" aria-label="Introduction">
+      <header>
+        <h1 class="headline fx-brand gsap-anim">Alliance Synergie Sant&eacute; - A2S</h1>
+        <p class="sub gsap-anim">Votre partenaire de confiance dans l’innovation dermo‑cosm&eacute;tique au Maroc</p>
+        <a href="#contact" class="cta gsap-anim">D&eacute;couvrir nos produits</a>
+      </header>
+      <div class="visual gsap-anim" aria-hidden="true">
+        <picture>
+          <source srcset="logoa2s.svg" type="image/svg+xml">
+          <img src="logoa2s.svg" alt="Logo Alliance Synergie Sant&eacute; (A2S)" width="200" height="200">
+        </picture>
+      </div>
+    </section>
+    <section class="tw-mt-10" role="region" aria-label="Galerie d’images">
+      <h2 class="tw-text-xl tw-font-extrabold tw-text-brand tw-mb-4 gsap-anim">Galerie d’images</h2>
+      <div id="galerie" class="tw-grid tw-gap-4">
+        <figure class="tw-bg-white tw-border tw-border-gray-200 tw-rounded-lg tw-overflow-hidden tw-shadow-sm gsap-anim fig-labo">
+          <a href="Laboratoire.png" data-lightbox data-caption="Laboratoire de recherche A2S">
+            <picture>
+              <source srcset="Laboratoire.png" type="image/png">
+              <img src="Laboratoire.png" alt="Laboratoire de recherche A2S pour solutions dermo‑cosm&eacute;tiques" class="tw-w-full tw-object-cover" loading="lazy">
+            </picture>
+          </a>
+          <figcaption class="tw-text-slate-600 tw-text-sm tw-p-2">Laboratoire de recherche</figcaption>
+        </figure>
+        <figure class="tw-bg-white tw-border tw-border-gray-200 tw-rounded-lg tw-overflow-hidden tw-shadow-sm gsap-anim fig-prod">
+          <a href="prod.png" data-lightbox data-caption="&Eacute;quipe de production A2S">
+            <picture>
+              <source srcset="prod.png" type="image/png">
+              <img src="prod.png" alt="&Eacute;quipe de production A2S pour produits dermo‑cosm&eacute;tiques" class="tw-w-full tw-object-cover" loading="lazy">
+            </picture>
+          </a>
+          <figcaption class="tw-text-slate-600 tw-text-sm tw-p-2">&Eacute;quipe de production</figcaption>
+        </figure>
+        <figure class="tw-bg-white tw-border tw-border-gray-200 tw-rounded-lg tw-overflow-hidden tw-shadow-sm gsap-anim fig-dermo">
+          <a href="dermo.png" data-lightbox data-caption="Produits dermo‑cosm&eacute;tiques A2S">
+            <picture>
+              <source srcset="dermo.png" type="image/png">
+              <img src="dermo.png" alt="Produits dermo‑cosm&eacute;tiques certifi&eacute;s A2S" class="tw-w-full tw-object-cover" loading="lazy">
+            </picture>
+          </a>
+          <figcaption class="tw-text-slate-600 tw-text-sm tw-p-2">Produits dermo‑cosm&eacute;tiques</figcaption>
+        </figure>
+        <figure class="tw-bg-white tw-border tw-border-gray-200 tw-rounded-lg tw-overflow-hidden tw-shadow-sm gsap-anim fig-centre">
+          <a href="distrub.png" data-lightbox data-caption="Centre de distribution A2S">
+            <picture>
+              <source srcset="distrub.png" type="image/png">
+              <img src="distrub.png" alt="Centre de distribution A2S pour solutions dermo‑cosm&eacute;tiques" class="tw-w-full tw-object-cover" loading="lazy">
+            </picture>
+          </a>
+          <figcaption class="tw-text-slate-600 tw-text-sm tw-p-2">Centre de distribution</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="partners marquee tw-mt-10" role="region" aria-label="Nos partenaires">
+      <h2 class="tw-text-xl tw-font-extrabold tw-text-brand tw-mb-4 tw-px-4 gsap-anim">Nos partenaires</h2>
+      <div class="partners-track">
+        <img src="dcap.svg" alt="Partenaire A2S 1 - Solutions dermo‑cosm&eacute;tique" loading="lazy" class="gsap-anim">
+        <img src="dwhite.svg" alt="Partenaire A2S 2 - Innovation sant&eacute; et beaut&eacute;" loading="lazy" class="gsap-anim">
+        <img src="sensilis.png" alt="Partenaire A2S 3 - Dermatologie et esth&eacute;tique" loading="lazy" class="gsap-anim">
+        <img src="cumlaude lab.png" alt="Partenaire A2S 4 - Distribution cosm&eacute;tique" loading="lazy" class="gsap-anim">
+        <img src="castera.png" alt="Partenaire A2S 1 - Solutions dermo‑cosm&eacute;tique" loading="lazy" class="gsap-anim">
+        <img src="buccotherm.svg" alt="Partenaire A2S 2 - Innovation sant&eacute; et beaut&eacute;" loading="lazy" class="gsap-anim">
+        <img src="babe (2).png" alt="Partenaire A2S 3 - Dermatologie et esth&eacute;tique" loading="lazy" class="gsap-anim">
+        <img src="florame.png" alt="Partenaire A2S 4 - Distribution cosm&eacute;tique" loading="lazy" class="gsap-anim">
+      </div>
+    </section>
+
+    <section class="tw-mt-10" role="region" aria-label="Chiffres cl&eacute;s">
+      <h2 class="tw-text-xl tw-font-extrabold tw-text-brand tw-mb-4 gsap-anim">Chiffres cl&eacute;s</h2>
+      <div class="kpi-grid">
+        <div class="kpi gsap-anim">
+          <div class="kpi-value">15+</div>
+          <div class="kpi-label">Ann&eacute;es d&rsquo;exp&eacute;rience</div>
+        </div>
+        <div class="kpi gsap-anim">
+          <div class="kpi-value">50+</div>
+          <div class="kpi-label">Produits certifi&eacute;s</div>
+        </div>
+        <div class="kpi gsap-anim">
+          <div class="kpi-value">200+</div>
+          <div class="kpi-label">Partenaires nationaux</div>
+        </div>
+        <div class="kpi gsap-anim">
+          <div class="kpi-value">10K+</div>
+          <div class="kpi-label">Clients satisfaits</div>
+        </div>
+      </div>
+      <a href="chiffres-cles.html" class="cta tw-mt-4 tw-inline-flex gsap-anim">Voir tous les chiffres cl&eacute;s</a>
+    </section>
+  </main>
+
+  <!-- Pied de page -->
+  <footer class="tw-bg-brand tw-text-white tw-py-10 tw-mt-10" role="contentinfo">
+    <div class="tw-max-w-[1200px] tw-mx-auto tw-px-4">
+      <div class="tw-grid tw-grid-cols-1 tw-gap-6 tw-text-center">
+        <div class="gsap-anim">
+          <h3 class="tw-text-lg tw-font-bold tw-mb-3">Alliance Synergie Sant&eacute;</h3>
+          <p class="tw-text-sm tw-leading-relaxed">A2S, bas&eacute; &agrave; Casablanca, propose des solutions dermo‑cosm&eacute;tiques innovantes et durables.</p>
+        </div>
+        <div class="gsap-anim">
+          <h3 class="tw-text-lg tw-font-bold tw-mb-3">Contact</h3>
+          <p class="tw-text-sm">145 avenue Hassan II, 1er &eacute;t., appt. 3, Parc de la Ligue arabe, Casablanca, Maroc</p>
+          <p class="tw-text-sm tw-mt-2"><a href="tel:+212522123456" class="tw-underline tw-hover:text-brand-light tw-p-2">+212 522 123 456</a></p>
+          <p class="tw-text-sm tw-mt-2"><a href="mailto:contact@a2s.ma" class="tw-underline tw-hover:text-brand-light tw-p-2">contact@a2s.ma</a></p>
+        </div>
+        <div class="gsap-anim">
+          <h3 class="tw-text-lg tw-font-bold tw-mb-3">Suivez-nous</h3>
+          <div class="tw-flex tw-gap-3 tw-justify-center tw-items-center">
+            <a href="https://facebook.com/a2s" aria-label="Facebook d&rsquo;Alliance Synergie Sant&eacute;" class="tw-p-2 gsap-social">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+              </svg>
+            </a>
+            <a href="https://linkedin.com/company/a2s" aria-label="LinkedIn d&rsquo;Alliance Synergie Sant&eacute;" class="tw-p-2 gsap-social">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <p class="tw-text-center tw-text-sm tw-mt-6 gsap-anim">&copy; 2025 A2S. Tous droits r&eacute;serv&eacute;s.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js" defer></script>
+</body>
+</html>
